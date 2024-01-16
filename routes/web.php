@@ -16,3 +16,24 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//custom routes
+Route::get('/demo',function(){
+    return view('demo');
+});
+
+Route::any('/test',function(){
+    echo "Testing the route";
+});
+
+// Route::put('/test1',function(){
+//     echo "Testing put";
+// });
+
+// Route::patch('/test2',function(){
+//     echo "Testing patch";
+// });
+
+// Route::delete('/test3',function(){
+//     echo "Testing delete";
+// });
