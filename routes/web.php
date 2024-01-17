@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\DemoController;
+use App\Http\Controllers\SingleActionController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\RegistrationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,27 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', [DemoController::class, 'index']);
+// Route::get('/about', [DemoController::class, 'about']);
+// Route::get('/courses', SingleActionController::class);
+// Route::resource('/photo', PhotoController::class);
 
-//custom routes
-Route::get('/demo',function(){
-    return view('demo');
-});
-
-Route::any('/test',function(){
-    echo "Testing the route";
-});
-
-// Route::put('/test1',function(){
-//     echo "Testing put";
-// });
-
-// Route::patch('/test2',function(){
-//     echo "Testing patch";
-// });
-
-// Route::delete('/test3',function(){
-//     echo "Testing delete";
-// });
+Route::get('/register', [RegistrationController::class, 'index']);
+Route::post('/register', [RegistrationController::class, 'register'])->name('register.post');

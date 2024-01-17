@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// custom route api
+Route::get('/get-data',function(){
+    return "Asalam o alaikum";
+});
