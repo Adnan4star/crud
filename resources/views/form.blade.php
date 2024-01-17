@@ -22,43 +22,16 @@
         @csrf
         <div class="container">
             <h1 class="text-center">User Registration System</h1>
-            <div class="form-group">
-                <label for="">Name</label>
-                <input type="text" class="form-control" name="name" value="{{old('name')}}" aria-describedby="HelpId" placeholder="Enter Name Please"/>
-                <span class="text-danger">
-                    @error('name')
-                        {{$message}}
-                    @enderror
-                </span>
-            </div>
-            <div class="form-group">
-                <label for="">Email</label>
-                <input type="email" class="form-control" name="email" value="{{old('email')}}" aria-describedby="HelpId" placeholder="Enter Email Please" />
-                <span class="text-danger">
-                    @error('email')
-                        {{$message}}
-                    @enderror
-                </span>
-            </div>
-            <div class="form-group">
-                <label for="">Password</label>
-                <input type="password" class="form-control" name="password" aria-describedby="HelpId" placeholder="Enter Password Please" />
-                <span class="text-danger">
-                    @error('password')
-                        {{$message}}
-                    @enderror
-                </span>
-            </div>
-            <div class="form-group">
-                <label for="">Confirm Password</label>
-                <input type="password" class="form-control" name="password_confirm" aria-describedby="HelpId" placeholder="Re-Enter Password" />
-                <span class="text-danger">
-                    @error('password_confirm')
-                        {{$message}}
-                    @enderror
-                </span>
-            </div>
-            
+            {{--sending varibale way is different--}}
+            @php
+              $demo = 1;  
+            @endphp
+            {{--represents component (x-)and its name(input)--}}
+            <x-input type="text" name="name" label="Name" :demo="$demo"/>
+            <x-input type="email" name="email" label="Email" />
+            <x-input type="password" name="password" label="Password" />
+            <x-input type="password" name="password_confirm" label="Confirm Password" />          
+
             <button class="btn btn-primary">Submit</button>
         </div>
     </form>
