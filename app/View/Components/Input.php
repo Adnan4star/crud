@@ -11,7 +11,7 @@ class Input extends Component
     public $label;
     public $type;
     public $name;
-    public $demo;
+    // public $demo;
     /**
     * Create a new component instance.
     */
@@ -20,7 +20,7 @@ class Input extends Component
         $this->label = $label;
         $this->type = $type;
         $this->name = $name;
-        $this->demo = $demo;
+        // $this->demo = $demo;
     }
     
     /**
