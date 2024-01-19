@@ -1,5 +1,5 @@
     <!-- Footer Section -->
-    <footer>All rights reserved @2024 Adnan Afzal</footer>
+    <footer>All rights reserved @2024 Tetralogicx</footer>
 </body>
 
 </html>

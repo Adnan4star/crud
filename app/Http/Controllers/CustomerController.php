@@ -9,14 +9,17 @@ class CustomerController extends Controller
 {
     public function create()
     {
-        return view('customer');
+        $url = url('/customer');
+        $title = "Create Customer";
+        $data = compact('url','title');
+        return view('customer')->with($data);
     }
 
     public function store(Request $request)
     {
-        echo "<pre>";
-        print_r($request->all());
-
+        p($request->all());
+        die();
+        
         //insert querys
         $customer = new Customer(); //creating object of customer class
         $customer->name = $request['name'];
@@ -36,5 +39,42 @@ class CustomerController extends Controller
         $customers = Customer::all();
         $data = compact('customers');
         return view('customer-view')->with($data);
+    }
+
+    public function delete($id)
+    {
+        $customer = Customer::find($id);
+        if(!is_null($customer)){
+            $customer->delete();
+        }
+        return redirect()->back();
+    }
+
+    public function edit($id)
+    {
+        $customer = Customer::find($id);
+        if(is_null($customer)){
+            //not found
+            return redirect()->back();
+        }else{
+            //found
+            $url = url('/customer/update') . '/' . $id;
+            $title = "Update Customer";
+            $data = compact('customer', 'url','title');
+            return view('customer')->with($data);
+        }
+    }
+
+    public function update($id, Request $request)
+    {
+        $customer = Customer::find($id);
+        $customer->name = $request['name'];
+        $customer->email = $request['email'];
+        $customer->country = $request['country'];
+        $customer->state = $request['state'];
+        $customer->address = $request['address'];
+        $customer->dob = $request['dob'];
+        $customer->save();
+        return redirect('/customer/view');
     }
 }

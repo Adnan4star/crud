@@ -6,16 +6,17 @@
 
    <!-- Menu Navigation Bar -->
     <nav class="menu">
-        <a href="#home">HOME</a>
-        <a href="#news">NEWS</a>
-        <a href="#notification">
-            NOTIFICATIONS
+        <a href="{{url('/')}}">HOME</a>
+        <a href="{{url('/courses')}}">COURSES</a>
+        <a href="{{url('/about')}}">ABOUT</a>
+        <a href="{{url('customer/view')}}">
+            VIEW CUSTOMERS
         </a>
         <div class="menu-log">
-            <a href="#login">LOGIN</a>
+            <a href="{{URL('/register')}}">REGISTER</a>
         </div>
     </nav>
-    
+
     <!-- Body section -->
     <main class="body_sec">
         <section id="Content">

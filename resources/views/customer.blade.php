@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Customer Registration</title>
+    <title>Customers</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -18,16 +18,16 @@
     />
 </head>
 <body>
-    <form action="{{route('store.post')}}" method="post">
+    <form action="{{$url}}" method="post">
         @csrf
         <div class="container">
-            <h1 class="text-center">Customer Registration</h1>
+            <h1 class="text-center">{{$title}}</h1>
             {{--sending varibale way is different--}}
             {{-- @php
               $demo = 1;  
             @endphp --}}
             {{--represents component (x-)and its name(input)--}}
-            <x-input type="text" name="name" label="Name" />
+            <x-input type="text" name="name" label="Name"  />
             <x-input type="email" name="email" label="Email" />
             <x-input type="password" name="password" label="Password" />
             <x-input type="password" name="password_confirm" label="Confirm Password" />

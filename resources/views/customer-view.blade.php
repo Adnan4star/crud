@@ -20,6 +20,9 @@
 
     <body>
         <div class="container">
+            <a href="{{route('customer.create')}}">
+            <button class="btn btn-primary d-inline-block m-2 float-right">Add</button>
+            </a>
             <div
                 class="table-responsive"
             >
@@ -35,6 +38,7 @@
                             <th scope="col">STATE</th>
                             <th scope="col">COUNTRY</th>
                             <th scope="col">STATUS</th>
+                            <th scope="col">ACTION</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,11 +47,25 @@
                         <tr class="">
                             <td scope="row">{{$item->name}}</td>
                             <td>{{$item->email}}</td>
-                            <td>{{$item->dob}}</td>
+                            <td>{{get_formatted_date($item->dob, "d-M-Y")}}</td>
                             <td>{{$item->address}}</td>
                             <td>{{$item->state}}</td>
                             <td>{{$item->country}}</td>
-                            <td>{{$item->status}}</td>
+                            <td>
+                                @if($item->status == "1")
+                                <a href="">
+                                    <span class="badge badge-success">Active</span>
+                                </a>
+                                @else
+                                <a href="">
+                                    <span class="badge badge-danger">Inactive</span>
+                                </a>
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{route('customer.delete', ['id'=>$item->customer_id])}}"><button class="btn btn-danger">Delete</button></a>
+                                <a href="{{route('customer.edit',['id'=>$item->customer_id])}}"><button class="btn btn-success">Edit</button></a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

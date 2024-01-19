@@ -27,8 +27,10 @@ Route::get('/courses', SingleActionController::class);
 
 Route::get('/register', [RegistrationController::class, 'index']);
 Route::post('/register', [RegistrationController::class, 'register'])->name('register.post');
-
-Route::get('/customer/create', [CustomerController::class, 'create']);
+Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
+Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
+Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer.create');
 Route::get('/customer/view', [CustomerController::class, 'view']);
 Route::post('/customer', [CustomerController::class, 'store'])->name('store.post');
 
