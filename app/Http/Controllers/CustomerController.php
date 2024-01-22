@@ -18,8 +18,6 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         p($request->all());
-        die();
-        
         //insert querys
         $customer = new Customer(); //creating object of customer class
         $customer->name = $request['name'];
@@ -41,6 +39,13 @@ class CustomerController extends Controller
         return view('customer-view')->with($data);
     }
 
+    public function trash()
+    {
+        $customers = Customer::onlyTrashed()->get();
+        $data = compact('customers');
+        return view('customer-trash')->with($data);
+    }
+
     public function delete($id)
     {
         $customer = Customer::find($id);
@@ -48,6 +53,24 @@ class CustomerController extends Controller
             $customer->delete();
         }
         return redirect()->back();
+    }
+
+    public function forceDelete($id)
+    {
+        $customer = Customer::withTrashed()->find($id);
+        if(!is_null($customer)){
+            $customer->forceDelete();
+        }
+        return redirect()->back();
+    }
+
+    public function restore($id)
+    {
+        $customer = Customer::withTrashed()->find($id);
+        if(!is_null($customer)){
+            $customer->restore();
+        }
+        return redirect('customer/view');
     }
 
     public function edit($id)
@@ -77,4 +100,6 @@ class CustomerController extends Controller
         $customer->save();
         return redirect('/customer/view');
     }
+
+    
 }

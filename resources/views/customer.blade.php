@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Customers</title>
+    <title>Create Customers</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -27,15 +27,15 @@
               $demo = 1;  
             @endphp --}}
             {{--represents component (x-)and its name(input)--}}
-            <x-input type="text" name="name" label="Name"  />
-            <x-input type="email" name="email" label="Email" />
+            <x-input type="text" name="name" label="Name" value="{{}}" />
+            <x-input type="email" name="email" label="Email" value={{}}/>
             <x-input type="password" name="password" label="Password" />
             <x-input type="password" name="password_confirm" label="Confirm Password" />
-            <x-input type="text" name="country" label="Country" />
-            <x-input type="text" name="state" label="State" />
-            <x-input type="text" name="address" label="address" />
+            <x-input type="text" name="country" label="Country" value={{}}/>
+            <x-input type="text" name="state" label="State" value={{}}/>
+            <x-input type="text" name="address" label="address" value={{}} />
             {{-- <x-input type="radio" name="email" label="Gender" /> --}}
-            <x-input type="date" name="dob" label="DD-MM-YYYY" />          
+            <x-input type="date" name="dob" label="DD-MM-YYYY" value={{}}/>          
 
             <button class="btn btn-primary">Submit</button>
         </div>

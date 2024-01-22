@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Customer View</title>
+        <title>Trash</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -23,9 +23,8 @@
             <a href="{{route('customer.create')}}">
             <button class="btn btn-primary d-inline-block m-2 float-right">Add</button>
             </a>
-            
-            <a href="{{url('customer/trash')}}">
-            <button class="btn btn-danger d-inline-block m-2 float-right">Visit Trash</button>
+            <a href="{{url('customer/view')}}">
+                <button class="btn btn-primary d-inline-block m-2 float-right">Customer View</button>
             </a>
 
             <div
@@ -68,8 +67,8 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{route('customer.delete', ['id'=>$item->customer_id])}}"><button class="btn btn-danger">Trash</button></a>
-                                <a href="{{route('customer.edit',['id'=>$item->customer_id])}}"><button class="btn btn-success">Edit</button></a>
+                                <a href="{{route('customer.force-delete', ['id'=>$item->customer_id])}}"><button class="btn btn-danger">Delete</button></a>
+                                <a href="{{route('customer.restore',['id'=>$item->customer_id])}}"><button class="btn btn-success">Restore</button></a>
                             </td>
                         </tr>
                         @endforeach
